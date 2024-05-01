@@ -1,9 +1,9 @@
 FROM fedora:40
-ARG RUST_VERSION=1.77.0
+ARG RUST_VERSION=1.77.2
 ENV RUST_VERSION=$RUST_VERSION
 
 #RUN dnf groupinstall "C Development Tools and Libraries" -y
-RUN dnf install git gcc-c++ openssl-devel libgsasl-devel cmake gtk4-devel libadwaita-devel gtksourceview5-devel cyrus-sasl-devel cyrus-sasl cyrus-sasl-gssapi cyrus-sasl-plain -y
+RUN dnf install rpm-build git gcc-c++ openssl-devel libgsasl-devel cmake gtk4-devel libadwaita-devel gtksourceview5-devel cyrus-sasl-devel cyrus-sasl cyrus-sasl-gssapi cyrus-sasl-plain -y
 
 RUN curl https://sh.rustup.rs -sSf | sh -s -- -y
 RUN . ~/.cargo/env
