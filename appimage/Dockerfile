@@ -30,5 +30,5 @@ RUN ln -nfs /squashfs-root/usr/bin/appimagetool /usr/bin/appimagetool
 RUN dnf install file desktop-file-utils appstream -y
 
 WORKDIR /mnt
-
+RUN git config --global --add safe.directory /mnt
 CMD ["/bin/bash"]
