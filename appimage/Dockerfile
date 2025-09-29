@@ -1,5 +1,5 @@
-FROM fedora:40
-ARG RUST_VERSION=1.77.2
+FROM fedora:42
+ARG RUST_VERSION=1.90.0
 ENV RUST_VERSION=$RUST_VERSION
 
 #RUN dnf groupinstall "C Development Tools and Libraries" -y
@@ -12,14 +12,14 @@ ENV PATH=/root/.cargo/bin:$PATH
 RUN rustup install ${RUST_VERSION}
 
 
-ENV APPIMAGE_VERSION=13
+ENV APPIMAGE_VERSION=1.9.0
 ENV APPIMAGE_EXTRACT_AND_RUN=1
 
 RUN cargo install cargo-appimage
 
 RUN dnf install wget -y
 
-RUN wget https://github.com/AppImage/AppImageKit/releases/download/$APPIMAGE_VERSION/appimagetool-x86_64.AppImage
+RUN wget https://github.com/AppImage/appimagetool/releases/download/$APPIMAGE_VERSION/appimagetool-x86_64.AppImage
 RUN chmod a+x appimagetool-x86_64.AppImage
 RUN dd if=/dev/zero bs=1 count=3 seek=8 conv=notrunc of=appimagetool-x86_64.AppImage
 RUN ls -lsha
